@@ -10,7 +10,8 @@ const Navbar = () => {
     <li><NavLink to="/borrowedBooks">Borrowed Books</NavLink></li>
     </>
   return (
-    <div className="navbar bg-blue-400 bg-opacity-20">
+    <header className="sticky top-0 z-10">
+        <div className="navbar py-6 bg-opacity-50 backdrop-blur-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -48,6 +49,7 @@ const Navbar = () => {
         <Link className="btn">Register</Link>
       </div>
     </div>
+    </header>
   );
 };
 

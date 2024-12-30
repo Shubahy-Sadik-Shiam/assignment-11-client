@@ -13,7 +13,7 @@ import "./banner..css";
 import { Parallax, Pagination, Navigation, Autoplay } from "swiper/modules";
 const Banner = () => {
   return (
-    <div className="h-[600px] w-10/12 mx-auto">
+    <div className="h-[600px]">
       <>
         <Swiper
           style={{
@@ -54,7 +54,7 @@ const Banner = () => {
           <SwiperSlide>
             <div
               slot="container-start"
-              className="parallax-bg"
+              className="parallax-bg inset-0 bg-black opacity-50"
               style={{
                 "background-image": `url(${img2})`,
               }}
@@ -72,7 +72,7 @@ const Banner = () => {
           <SwiperSlide>
             <div
               slot="container-start"
-              className="parallax-bg"
+              className="parallax-bg inset-0 bg-black opacity-50"
               style={{
                 "background-image": `url(${img3})`,
               }}
