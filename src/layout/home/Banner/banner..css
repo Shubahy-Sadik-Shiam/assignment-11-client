@@ -1,0 +1,42 @@
+#app { height: 100% }
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  color: #000000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide .title {
+  font-size: 100px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.swiper-slide .text {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1.3;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
