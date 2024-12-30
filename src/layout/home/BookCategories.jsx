@@ -11,25 +11,25 @@ const BookCategories = () => {
       <div className="md:flex gap-8 justify-center mb-10">
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-            <img className="w-32" src={pic1} alt="" />
+            <img className="w-28" src={pic1} alt="" />
           <p className="text-4xl font-bold">Novel</p>
         </div>
       </div>
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-        <img className="w-32" src={pic2} alt="" />
+        <img className="w-28" src={pic2} alt="" />
           <p className="text-4xl font-bold">Thriller</p>
         </div>
       </div>
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-        <img className="w-32" src={pic3} alt="" />
+        <img className="w-28" src={pic3} alt="" />
           <p className="text-4xl font-bold">History</p>
         </div>
       </div>
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body">
-        <img className="w-32" src={pic4} alt="" />
+        <img className="w-28" src={pic4} alt="" />
           <p className="text-4xl font-bold">Comics</p>
         </div>
       </div>
