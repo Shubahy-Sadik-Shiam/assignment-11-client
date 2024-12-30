@@ -44,10 +44,10 @@ const Banner = () => {
             ></div>
             <div className="flex h-full flex-col justify-center items-center">
               <div className="title text-white" data-swiper-parallax="-300">
-                <p className="font-bold max-sm:text-2xl"> Book Reading</p>
+                <p className="font-bold max-sm:text-6xl"> Book Reading</p>
               </div>
               <div className="text text-white" data-swiper-parallax="-100">
-                <p className="font-semibold">Immerse Yourself in the Joy of Reading</p>
+                <p className="font-semibold max-sm:text-3xl">Immerse Yourself in the Joy of Reading</p>
               </div>
             </div>
           </SwiperSlide>
@@ -62,10 +62,10 @@ const Banner = () => {
             ></div>
              <div className="flex h-full flex-col justify-center items-center">
               <div className="title text-white" data-swiper-parallax="-300">
-                <p className="font-bold max-sm:text-2xl">Book Store</p>
+                <p className="font-bold max-sm:text-6xl">Book Store</p>
               </div>
               <div className="text text-white" data-swiper-parallax="-100">
-                <p className="font-semibold">Your Gateway to Endless Stories.</p>
+                <p className="font-semibold max-sm:text-3xl">Your Gateway to Endless Stories.</p>
               </div>
             </div>
           </SwiperSlide>
@@ -80,10 +80,10 @@ const Banner = () => {
             ></div>
             <div className="flex h-full flex-col justify-center items-center">
               <div className="title text-white" data-swiper-parallax="-300">
-                <p className="font-bold max-sm:text-2xl">Book Guide</p>
+                <p className="font-bold max-sm:text-6xl">Book Guide</p>
               </div>
               <div className="text text-white" data-swiper-parallax="-100">
-                <p className="font-semibold">Navigate Your Journey Through Books.</p>
+                <p className="font-semibold max-sm:text-3xl">Navigate Your Journey Through Books.</p>
               </div>
             </div>
           </SwiperSlide>

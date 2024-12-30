@@ -3,7 +3,7 @@ const ExtraSection2 = () => {
     return (
         <div className="my-20 bg-yellow-300">
             <h2 className="text-4xl mb-10 font-bold text-center">Book Nest Gift Card</h2>
-            <div className="flex gap-4 items-center justify-center">
+            <div className="md:flex gap-4 items-center justify-center">
                 <div className="space-y-6 w-6/12">
                 <div>
                     <h3 className="text-2xl font-semibold mb-3">Any Occasion</h3>

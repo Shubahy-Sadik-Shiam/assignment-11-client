@@ -3,7 +3,7 @@ import registerData from "../assets/Lottie/Animation - 1735578629692.json";
 import { Link } from "react-router-dom";
 const Register = () => {
   return (
-    <div className="hero bg-base-200">
+    <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-full">
           <Lottie className="" animationData={registerData}></Lottie>
