@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/icons8-books-96.png";
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+
+  const {user, logOutUser} = useAuth()
+
   const links = (
     <>
       <li>
@@ -55,12 +59,33 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn">
-            Login
-          </Link>
-          <Link to="/register" className="btn">
-            Register
-          </Link>
+         {user ? (
+            <div className="flex items-center gap-2">
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user?.displayName}
+              >
+                <img
+                  className="w-12 h-12 rounded-full"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              </div>
+              <button onClick={logOutUser} className="btn bg-gradient-to-br from-[#4d6afb] via-[#7a8de1] to-[#A29AE5] text-white font-bold">
+                Log out
+              </button>
+            </div>
+          ) : (
+            <div>
+              {" "}
+              <Link to="/login" className="btn bg-gradient-to-br from-[#4d6afb] via-[#7a8de1] to-[#A29AE5] text-white font-bold">
+                Login
+              </Link>
+              <Link to="/register" className="btn bg-gradient-to-br from-[#4d6afb] via-[#7a8de1] to-[#A29AE5] text-white font-bold ml-2">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </header>

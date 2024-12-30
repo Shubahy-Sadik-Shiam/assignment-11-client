@@ -1,7 +1,32 @@
 import Lottie from "lottie-react";
 import registerData from "../assets/Lottie/Animation - 1735578629692.json";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 const Register = () => {
+
+  const {createUser, updateUserInfo} = useAuth()
+
+  const handleRegister = e => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+
+    const registerInfo = {name, email, photo, password};
+    console.log(registerInfo);
+
+    createUser(email, password)
+    .then(result=>{
+      updateUserInfo(name, photo)
+      console.log(result.user);
+    }).catch(error=>{
+      console.log(error);
+    })
+
+  }
+
   return (
     <div className="hero">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -10,13 +35,14 @@ const Register = () => {
         </div>
         <div className="card bg-base-100 w-full shadow-2xl">
           <h1 className="text-3xl mt-4 text-center font-bold">Register now!</h1>
-          <form className="card-body">
+          <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="name"
                 className="input input-bordered"
                 required
@@ -28,6 +54,7 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -39,6 +66,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                name="photo"
                 placeholder="photo url"
                 className="input input-bordered"
                 required
@@ -50,13 +78,14 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button type="submit" className="btn btn-primary">Register</button>
             </div>
             <p className="text-center">
               Already have an account?{" "}
