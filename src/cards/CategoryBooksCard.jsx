@@ -1,8 +1,9 @@
 import ReactStars from "react-rating-stars-component";
 import categoryIcon from "../assets/category.png";
 import authorIcon from "../assets/author.png";
+import { Link } from "react-router-dom";
 const CategoryBooksCard = ({ book }) => {
-  const { cover_photo, book_title, author_name, quantity, category, rating } =
+  const { _id, cover_photo, book_title, author_name, quantity, category, rating } =
     book;
   return (
     <div className="card rounded-none bg-base-100 shadow-md hover:shadow-yellow-950 hover:shadow-lg transition-transform duration-500 hover:-translate-y-2">
@@ -29,7 +30,7 @@ const CategoryBooksCard = ({ book }) => {
           </p>
         </div>
         <div className="card-actions">
-          <button className="btn btn-primary">Details</button>
+          <Link to={`/book/${_id}`}><button className="btn btn-primary">Details</button></Link>
         </div>
       </div>
     </div>

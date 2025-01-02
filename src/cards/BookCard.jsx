@@ -6,7 +6,7 @@ const BookCard = ({ book }) => {
     book;
 
   return (
-    <div className="card rounded-none bg-base-100 shadow-md hover:shadow-yellow-950 hover:shadow-lg transition-transform duration-500 hover:-translate-y-2">
+    <div className="card rounded-none bg-base-100 shadow-md hover:shadow-[#b3805b] hover:shadow-lg transition-transform duration-500 hover:-translate-y-2">
       <figure className="px-10 pt-10 bg-gray-100">
         <img src={cover_photo} alt="Shoes" className="pb-6 w-60 h-80" />
       </figure>
