@@ -7,12 +7,13 @@ import PrivateRoute from "./PrivateRoute";
 import AddBook from "../pages/AddBook";
 import ErrorPage from "../pages/ErrorPage";
 import AllBooks from "../pages/AllBooks";
+import CategoryBooks from "../pages/CategoryBooks";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBooks",
-        element: <AllBooks></AllBooks>,
-        loader: ()=> fetch("http://localhost:5000/allBooks")
+        element: (
+          <PrivateRoute>
+            <AllBooks></AllBooks>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/allBooks"),
       },
       {
         path: "/login",
@@ -30,6 +35,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/books/:category",
+        element: <CategoryBooks></CategoryBooks>,
+        loader: ({params})=> fetch(`http://localhost:5000/books/${params.category}`)
       },
       {
         path: "/addBook",
