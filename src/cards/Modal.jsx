@@ -2,7 +2,6 @@ import moment from "moment";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import Toast from "../hooks/Toast";
-import { useState } from "react";
 
 const Modal = ({ singleBook, setAvailable }) => {
   const { user } = useAuth();
@@ -18,6 +17,7 @@ const Modal = ({ singleBook, setAvailable }) => {
 
     const borrowInfo = {
       email,
+      book_id: _id,
       userName,
       borrowedDate,
       returnDate,
