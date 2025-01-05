@@ -32,10 +32,15 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
         console.log(response);
         Toast.fire({
           icon: "success",
-          title: "Book borrowed successful",
+          title: "Book borrowed and added to the Borrowed Books page",
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        Toast.fire({
+          icon: "error",
+          title: "Something went wrong!",
+        });
+      });
 
       fetch("http://localhost:5000/allBooks", {
         method: "PUT",

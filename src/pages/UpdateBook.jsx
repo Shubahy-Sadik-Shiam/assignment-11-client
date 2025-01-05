@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import bgImg from "../assets/slider1.jpg";
 import Toast from "../hooks/Toast";
+import { Helmet } from "react-helmet";
 const UpdateBook = () => {
   const book = useLoaderData();
 
@@ -8,23 +9,23 @@ const UpdateBook = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-    
+
     const updatedBook = initialData;
 
     fetch(`http://localhost:5000/updateBook/${book?._id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedBook),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-            Toast.fire({
-                icon: "success",
-                title: "Book information updated",
-              });
-        })
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedBook),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        Toast.fire({
+          icon: "success",
+          title: "Book information updated",
+        });
+      });
   };
   return (
     <div
@@ -33,6 +34,9 @@ const UpdateBook = () => {
         backgroundImage: `url(${bgImg})`,
       }}
     >
+      <Helmet>
+        <title>Update Book || BookNest </title>
+      </Helmet>
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="card bg-base-100 bg-opacity-20 backdrop-blur-md w-full max-w-md shadow-2xl">
         <form onSubmit={handleUpdate} className="card-body">
@@ -102,7 +106,9 @@ const UpdateBook = () => {
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">Update Book Information</button>
+            <button className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
+              Update Book Information
+            </button>
           </div>
         </form>
       </div>

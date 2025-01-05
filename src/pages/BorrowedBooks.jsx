@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import BorrowedBooksCard from "../cards/BorrowedBooksCard";
+import { Helmet } from "react-helmet";
 
 const BorrowedBooks = () => {
   const { user } = useAuth();
@@ -16,13 +17,17 @@ const BorrowedBooks = () => {
   }, [user.email]);
   return (
     <div>
+      <Helmet>
+        <title>Borrowed Books || BookNest </title>
+      </Helmet>
       <div className="space-y-4 w-10/12 mx-auto py-10">
         {borrowedBooks.map((book) => (
-          <BorrowedBooksCard 
-          key={book._id} 
-          book={book}
-          borrowedBooks={borrowedBooks} 
-          setBorrowedBooks={setBorrowedBooks}></BorrowedBooksCard>
+          <BorrowedBooksCard
+            key={book._id}
+            book={book}
+            borrowedBooks={borrowedBooks}
+            setBorrowedBooks={setBorrowedBooks}
+          ></BorrowedBooksCard>
         ))}
       </div>
     </div>

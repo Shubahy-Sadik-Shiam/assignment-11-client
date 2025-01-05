@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import Toast from "../hooks/Toast";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { loginUser, googleLogin } = useAuth();
@@ -47,12 +48,17 @@ const Login = () => {
   };
   return (
     <div className="hero">
+      <Helmet>
+        <title>Login || BookNest </title>
+      </Helmet>
       <div className="hero-content pt-10 flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-full">
           <Lottie animationData={loginData}></Lottie>
         </div>
         <div className="card bg-base-200 w-full shadow-2xl">
-          <h1 className="text-3xl text-center text-yellow-400 mt-4 font-bold">Login now!</h1>
+          <h1 className="text-3xl text-center text-yellow-400 mt-4 font-bold">
+            Login now!
+          </h1>
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -79,7 +85,10 @@ const Login = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
+              <button
+                type="submit"
+                className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500"
+              >
                 Login
               </button>
               <div className="divider">OR</div>
