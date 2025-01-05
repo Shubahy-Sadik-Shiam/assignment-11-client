@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import Toast from "../hooks/Toast";
 
-const Modal = ({ singleBook, setAvailable }) => {
+const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
   const { user } = useAuth();
   const { _id, cover_photo, book_title, category} = singleBook;
 
@@ -32,7 +32,7 @@ const Modal = ({ singleBook, setAvailable }) => {
         console.log(response);
         Toast.fire({
           icon: "success",
-          title: "Signed in successfully",
+          title: "Book borrowed successful",
         });
       })
       .catch((error) => console.log(error));
@@ -49,6 +49,7 @@ const Modal = ({ singleBook, setAvailable }) => {
         console.log(data);
         if(data.modifiedCount > 0){
             setAvailable((prev)=> prev-1)
+            setUpdateIsBorrowed(true)
         }
       })
   };

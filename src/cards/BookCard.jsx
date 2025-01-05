@@ -1,8 +1,9 @@
 import ReactStars from "react-rating-stars-component";
 import authorIcon from "../assets/author.png";
 import categoryIcon from "../assets/category.png";
+import { Link } from "react-router-dom";
 const BookCard = ({ book }) => {
-  const { cover_photo, book_title, author_name, quantity, category, rating } =
+  const {_id, cover_photo, book_title, author_name, quantity, category, rating } =
     book;
 
   return (
@@ -30,7 +31,9 @@ const BookCard = ({ book }) => {
           </p>
         </div>
         <div className="card-actions">
-          <button className="btn btn-primary">Update</button>
+          <Link to={`/book/update/${_id}`}>
+            <button className="btn btn-primary">Update</button>
+          </Link>
         </div>
       </div>
     </div>

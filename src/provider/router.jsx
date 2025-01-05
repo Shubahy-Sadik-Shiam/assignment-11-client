@@ -10,6 +10,7 @@ import AllBooks from "../pages/AllBooks";
 import CategoryBooks from "../pages/CategoryBooks";
 import BookDetails from "../pages/BookDetails";
 import BorrowedBooks from "../pages/BorrowedBooks";
+import UpdateBook from "../pages/UpdateBook";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,15 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
+        path: "/book/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateBook></UpdateBook>
+          </PrivateRoute>
+        ),
+        loader: ({params})=> fetch(`http://localhost:5000/book/${params.id}`)
+      },
+      {
         path: "/borrowedBooks",
         element: (
           <PrivateRoute>
@@ -55,7 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/book/:id",
-        element: <BookDetails></BookDetails>,
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/book/${params.id}`),
       },

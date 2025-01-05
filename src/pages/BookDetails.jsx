@@ -3,10 +3,11 @@ import authorIcon from "../assets/author.png";
 import categoryIcon from "../assets/category.png";
 import ReactStars from "react-rating-stars-component";
 import Modal from "../cards/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const BookDetails = () => {
   const singleBook = useLoaderData();
+
   const {
     _id,
     cover_photo,
@@ -17,14 +18,23 @@ const BookDetails = () => {
     rating,
     description,
     content,
+    isBorrowed
   } = singleBook;
 
   const [available, setAvailable] = useState(quantity);
+  const [disabled, setDisabled] = useState(false);
+  const [updateIsBorrowed, setUpdateIsBorrowed] = useState(isBorrowed);
+
+ useEffect(()=>{
+  if(quantity <= 0){
+    return setDisabled(true);
+  }
+ },[quantity])
 
   return (
-    <div className="lg:p-20">
+    <div className="lg:p-20 mb-10">
         <div className="card flex-col lg:flex-row rounded-none card-side gap-10">
-      <figure className="lg:w-1/2 h-[750px] shadow-xl">
+      <figure className="lg:w-1/2 h-[800px] shadow-xl">
         <img src={cover_photo} alt="Book" />
       </figure>
       <div className="lg:w-1/2 space-y-4 bg-base-100">
@@ -51,11 +61,14 @@ const BookDetails = () => {
         </div>
         <p>{content}.... <span className="font-semibold underline cursor-pointer">read more</span></p>
         <div className="card-actions">
-          <button onClick={() => document.getElementById("my_modal_5").showModal()} className="btn btn-primary">Borrow Now</button>
+          <button disabled={disabled || updateIsBorrowed} onClick={() => document.getElementById("my_modal_5").showModal()} className="btn btn-primary">{updateIsBorrowed? "Already Borrowed" : "Borrow Now"}</button>
         </div>
       </div>
     </div>
-    <Modal singleBook={singleBook} setAvailable={setAvailable}></Modal>
+    <Modal 
+    singleBook={singleBook} 
+    setAvailable={setAvailable}
+    setUpdateIsBorrowed={setUpdateIsBorrowed}></Modal>
     </div>
   );
 };

@@ -2,31 +2,56 @@ import Lottie from "lottie-react";
 import loginData from "../assets/Lottie/Animation - 1735578998563.json";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { FcGoogle } from "react-icons/fc";
+import Toast from "../hooks/Toast";
 
 const Login = () => {
+  const { loginUser, googleLogin } = useAuth();
 
-  const {loginUser} = useAuth();
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        Toast.fire({
+          icon: "success",
+          title: "Google Login successful",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Toast.fire({
+          icon: "error",
+          title: "Login with google failed",
+        });
+      });
+  };
 
-  const handleLogin = e=>{
+  const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
 
     loginUser(email, password)
-    .then(result=>{
-      console.log(result.user);
-    }).catch(error=>{
-      console.log(error);
-    })
-  }
+      .then((result) => {
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+      })
+      .catch((error) => {
+        Toast.fire({
+          icon: "error",
+          title: "Login failed",
+        });
+      });
+  };
   return (
     <div className="hero">
       <div className="hero-content ite flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left w-full">
           <Lottie animationData={loginData}></Lottie>
         </div>
-        <div className="card bg-base-100 w-full shadow-2xl">
+        <div className="card bg-base-200 w-full shadow-2xl">
           <h1 className="text-3xl text-center mt-4 font-bold">Login now!</h1>
           <form onSubmit={handleLogin} className="card-body">
             <div className="form-control">
@@ -54,11 +79,24 @@ const Login = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary">Login</button>
+              <button type="submit" className="btn btn-primary">
+                Login
+              </button>
+              <div className="divider">OR</div>
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-block bg-white"
+              >
+                {" "}
+                <FcGoogle className="text-2xl" /> Sign In with Google
+              </button>
             </div>
             <p className="text-center">
               New to this site?{" "}
-              <span className="text-blue-500 font-semibold"><Link to='/register'>Sign Up </Link> </span>now!
+              <span className="text-blue-500 font-semibold">
+                <Link to="/register">Sign Up </Link>{" "}
+              </span>
+              now!
             </p>
           </form>
         </div>

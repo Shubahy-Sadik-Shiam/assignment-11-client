@@ -11,8 +11,10 @@ const AddBook = () => {
     axios
       .post("http://localhost:5000/allBooks", initialData)
       .then((response) => {
-        console.log(response);
-        alert("Book added successful");
+        Toast.fire({
+          icon: "success",
+          title: "Book added successful",
+        });
       })
       .catch((error) => {
         console.log(error);
