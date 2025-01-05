@@ -3,9 +3,12 @@ import BookCard from "../cards/BookCard";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { MdOutlineArrowDropDownCircle } from "react-icons/md";
+import axios from "axios";
+import { FaSliders } from "react-icons/fa6";
 
 const AllBooks = () => {
-  const books = useLoaderData();
+  const loadedBooks = useLoaderData();
+  const [books, setBooks] = useState(loadedBooks);
 
   const [isTableView, setIsTableView] = useState(false);
   const [selectedView, setSelectedView] = useState("Card View");
@@ -19,6 +22,13 @@ const AllBooks = () => {
     setIsTableView(true);
     setSelectedView("Table View");
   };
+
+  const handleAvailableBooks = () => {
+    axios.get("http://localhost:5000/availableBooks")
+    .then(response=>{
+      setBooks(response.data)
+    })
+  }
   return (
     <div>
       <Helmet>
@@ -29,8 +39,8 @@ const AllBooks = () => {
       </h2>
       <div className="flex justify-between mt-5 w-10/12 mx-auto mb-4">
         <div>
-          <button className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
-            Show Available Books
+          <button onClick={handleAvailableBooks} className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
+            Show Available Books <FaSliders />
           </button>
         </div>
         <div>
