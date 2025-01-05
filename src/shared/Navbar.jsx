@@ -24,7 +24,7 @@ const Navbar = () => {
   );
   return (
     <header className="sticky top-0 z-10">
-      <div className="navbar py-6 px-5 bg-opacity-50 backdrop-blur-lg">
+      <div className="navbar py-4 px-10 bg-opacity-50 backdrop-blur-lg shadow-lg ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="md:flex items-center gap-2">
-            <a className="text-3xl font-bold">BookNest</a>
+            <a className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">BookNest</a>
             <img className="w-16" src={logo} alt="" />
           </div>
         </div>
@@ -71,17 +71,17 @@ const Navbar = () => {
                   alt=""
                 />
               </div>
-              <button onClick={logOutUser} className="btn bg-gradient-to-br from-[#4d6afb] via-[#7a8de1] to-[#A29AE5] text-white font-bold">
+              <button onClick={logOutUser} className="btn bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-500 rounded-lg hover:bg-gradient-to-l hover:from-yellow-500 hover:to-yellow-300 transition duration-500 font-bold">
                 Log out
               </button>
             </div>
           ) : (
             <div>
               {" "}
-              <Link to="/login" className="btn bg-gradient-to-br from-[#4d6afb] via-[#7a8de1] to-[#A29AE5] text-white font-bold">
+              <Link to="/login" className="btn bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-500 rounded-lg hover:bg-gradient-to-l hover:from-yellow-500 hover:to-yellow-300 transition duration-500 font-bold">
                 Login
               </Link>
-              <Link to="/register" className="btn bg-gradient-to-br from-[#4d6afb] via-[#7a8de1] to-[#A29AE5] text-white font-bold ml-2">
+              <Link to="/register" className="btn bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-500 rounded-lg hover:bg-gradient-to-l hover:from-yellow-500 hover:to-yellow-300 transition duration-500 font-bold ml-2">
                 Register
               </Link>
             </div>

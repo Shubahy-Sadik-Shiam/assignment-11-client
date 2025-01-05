@@ -32,12 +32,12 @@ const BookDetails = () => {
  },[quantity])
 
   return (
-    <div className="lg:p-20 mb-10">
+    <div className="lg:p-20 pb-10 w-10/12 mx-auto">
         <div className="card flex-col lg:flex-row rounded-none card-side gap-10">
       <figure className="lg:w-1/2 h-[800px] shadow-xl">
         <img src={cover_photo} alt="Book" />
       </figure>
-      <div className="lg:w-1/2 space-y-4 bg-base-100">
+      <div className="lg:w-1/2 space-y-4">
         <h2 className="text-4xl font-bold font-serif">{book_title}</h2>
         <div className="flex gap-2 mb-6">
           <img className="object-cover" src={authorIcon} alt="author" />
@@ -61,7 +61,7 @@ const BookDetails = () => {
         </div>
         <p>{content}.... <span className="font-semibold underline cursor-pointer">read more</span></p>
         <div className="card-actions">
-          <button disabled={disabled || updateIsBorrowed} onClick={() => document.getElementById("my_modal_5").showModal()} className="btn btn-primary">{updateIsBorrowed? "Already Borrowed" : "Borrow Now"}</button>
+          <button disabled={disabled || updateIsBorrowed} onClick={() => document.getElementById("my_modal_5").showModal()} className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">{updateIsBorrowed? "Already Borrowed" : "Borrow Now"}</button>
         </div>
       </div>
     </div>

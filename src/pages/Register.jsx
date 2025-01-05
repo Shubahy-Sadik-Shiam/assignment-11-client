@@ -34,7 +34,7 @@ const Register = () => {
           <Lottie className="" animationData={registerData}></Lottie>
         </div>
         <div className="card bg-base-100 w-full shadow-2xl">
-          <h1 className="text-3xl mt-4 text-center font-bold">Register now!</h1>
+          <h1 className="text-3xl mt-4 text-yellow-400 text-center font-bold">Register now!</h1>
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -85,7 +85,7 @@ const Register = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button type="submit" className="btn btn-primary">Register</button>
+              <button type="submit" className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">Register</button>
             </div>
             <p className="text-center">
               Already have an account?{" "}

@@ -82,7 +82,7 @@ const BorrowedBooksCard = ({ book, borrowedBooks, setBorrowedBooks }) => {
           <div>
             <button
               onClick={() => handleReturn(_id)}
-              className="btn btn-primary"
+              className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500"
             >
               Return
             </button>

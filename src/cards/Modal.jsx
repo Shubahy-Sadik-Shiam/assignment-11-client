@@ -80,23 +80,23 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
               type="text"
               name="userName"
               placeholder="Type here"
-              className="input input-bordered w-full"
+              className="input input-warning input-bordered w-full"
             />
             <input
               defaultValue={email}
               type="text"
               name="email"
               placeholder="Type here"
-              className="input input-bordered w-full"
+              className="input input-warning input-bordered w-full"
             />
             <input
               type="date"
               required
               name="returnDate"
               placeholder="Type here"
-              className="input input-bordered w-full"
+              className="input input-bordered input-warning w-full"
             />
-            <button type="submit" className="btn btn-block">
+            <button type="submit" className="btn btn-block bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
               Submit
             </button>
           </form>

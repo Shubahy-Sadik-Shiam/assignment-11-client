@@ -7,7 +7,7 @@ const CategoryBooksCard = ({ book }) => {
     book;
   return (
     <div className="card rounded-none bg-base-100 shadow-md hover:shadow-[#b3805b] hover:shadow-lg transition-transform duration-500 hover:-translate-y-2">
-      <figure className="px-10 pt-10 bg-gray-100">
+      <figure className="px-10 pt-10 bg-base-200">
         <img src={cover_photo} alt="book" className="pb-6 w-60 h-80" />
       </figure>
       <div className="card-body">
@@ -30,7 +30,7 @@ const CategoryBooksCard = ({ book }) => {
           </p>
         </div>
         <div className="card-actions">
-          <Link to={`/book/${_id}`}><button className="btn btn-primary">Details</button></Link>
+          <Link to={`/book/${_id}`}><button className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">Details</button></Link>
         </div>
       </div>
     </div>

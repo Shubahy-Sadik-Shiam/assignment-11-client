@@ -1,9 +1,19 @@
 import logo from '../assets/icons8-books-96.png'
+import bg from "../assets/footer.jpg"
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-base-200 p-10">
-      <aside className='space-y-3'>
-        <img src={logo} alt="" />
+    <footer
+    style={{
+      backgroundImage: `url(${bg})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)"
+    }}
+    className="footer footer-center text-white">
+      <div className='backdrop-blur-sm w-full space-y-4 py-4'>
+      <aside className='space-y-4'>
+        <img className='w-28 mx-auto' src={logo} alt="" />
         <p className="font-bold">
           Book Nest Library Ltd.
           <br />
@@ -48,6 +58,7 @@ const Footer = () => {
           </a>
         </div>
       </nav>
+      </div>
     </footer>
   );
 };

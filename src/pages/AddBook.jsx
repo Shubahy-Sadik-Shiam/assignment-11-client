@@ -23,10 +23,10 @@ const AddBook = () => {
   };
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center">Add a Book</h2>
+      <h2 className="text-center bg-gradient-to-r from-yellow-100 via-pink-200 to-yellow-300 text-4xl font-bold py-10">Add a New Treasure to the Collection</h2>
       <div className="lg:flex justify-center">
-        <form onSubmit={handleAddBook} className="my-4">
-          <div className="border max-w-[550px] flex flex-col rounded-2xl items-center mx-auto p-4">
+        <form onSubmit={handleAddBook} className="my-10 rounded-xl bg-white">
+          <div className="max-w-[550px] flex flex-col items-center mx-auto p-4 shadow-xl rounded-xl">
             <div className="md:flex gap-3">
               {/* book img */}
               <div>
@@ -38,7 +38,7 @@ const AddBook = () => {
                   type="text"
                   name="cover_photo"
                   placeholder="Upload a image link"
-                  className="input input-bordered w-60"
+                  className="input input-warning input-bordered w-60"
                 />
               </div>
               {/* book title */}
@@ -51,7 +51,7 @@ const AddBook = () => {
                   type="text"
                   name="book_title"
                   placeholder="Book title"
-                  className="input input-bordered w-60"
+                  className="input input-warning input-bordered w-60"
                 />
               </div>
             </div>
@@ -66,7 +66,7 @@ const AddBook = () => {
                   type="number"
                   name="quantity"
                   placeholder="Book quantity"
-                  className="input input-bordered w-60"
+                  className="input input-warning input-bordered w-60"
                 />
               </div>
               {/* Author name */}
@@ -79,7 +79,7 @@ const AddBook = () => {
                   required
                   name="author_name"
                   placeholder="Author name"
-                  className="input input-bordered w-60"
+                  className="input input-warning input-bordered w-60"
                 />
               </div>
             </div>
@@ -93,7 +93,7 @@ const AddBook = () => {
                   name="category"
                   required
                   defaultValue="Select a category"
-                  className="select select-bordered w-60"
+                  className="select select-warning select-bordered w-60"
                 >
                   <option disabled>Select a category</option>
                   <option>Novel</option>
@@ -112,7 +112,7 @@ const AddBook = () => {
                   type="number"
                   name="rating"
                   placeholder="rating"
-                  className="input input-bordered w-60"
+                  className="input input-bordered input-warning w-60"
                 />
               </div>
             </div>
@@ -125,7 +125,7 @@ const AddBook = () => {
                 <textarea
                   required
                   name="description"
-                  className="textarea w-60 textarea-bordered"
+                  className="textarea w-60 textarea-bordered textarea-warning"
                   placeholder="Book description"
                 ></textarea>
               </div>
@@ -137,14 +137,14 @@ const AddBook = () => {
                 <textarea
                   required
                   name="content"
-                  className="textarea textarea-bordered w-60"
+                  className="textarea textarea-bordered textarea-warning w-60"
                   placeholder="Book content"
                 ></textarea>
               </div>
             </div>
             {/* submit button */}
             <input
-              className="btn btn-block my-3"
+              className="btn btn-block bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 rounded-lg hover:bg-gradient-to-l hover:from-yellow-500 hover:to-yellow-400 transition duration-500 my-3"
               type="submit"
               value="Add Book"
             />

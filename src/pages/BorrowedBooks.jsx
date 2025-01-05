@@ -16,7 +16,7 @@ const BorrowedBooks = () => {
   }, [user.email]);
   return (
     <div>
-      <div className="space-y-4">
+      <div className="space-y-4 w-10/12 mx-auto py-10">
         {borrowedBooks.map((book) => (
           <BorrowedBooksCard 
           key={book._id} 

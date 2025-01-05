@@ -102,7 +102,7 @@ const UpdateBook = () => {
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Update Book Information</button>
+            <button className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">Update Book Information</button>
           </div>
         </form>
       </div>
