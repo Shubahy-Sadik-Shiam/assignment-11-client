@@ -27,9 +27,9 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
     };
 
     axios
-      .post("http://localhost:5000/borrowedBooks", borrowInfo)
+      .post("https://assignment-11-server-rouge-ten.vercel.app/borrowedBooks", borrowInfo)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         Toast.fire({
           icon: "success",
           title: "Book borrowed and added to the Borrowed Books page",
@@ -42,7 +42,7 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
         });
       });
 
-      fetch("http://localhost:5000/allBooks", {
+      fetch("https://assignment-11-server-rouge-ten.vercel.app/allBooks", {
         method: "PUT",
         headers: {
             "content-type": "application/json"
@@ -51,7 +51,7 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
       })
       .then(res=>res.json())
       .then(data=>{
-        console.log(data);
+        // console.log(data);
         if(data.modifiedCount > 0){
             setAvailable((prev)=> prev-1)
             setUpdateIsBorrowed(true)

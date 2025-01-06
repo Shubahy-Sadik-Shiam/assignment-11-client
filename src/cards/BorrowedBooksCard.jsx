@@ -24,7 +24,7 @@ const BorrowedBooksCard = ({ book, borrowedBooks, setBorrowedBooks }) => {
       confirmButtonText: "Yes, return it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/borrowedBooks/${_id}`, {
+        fetch(`https://assignment-11-server-rouge-ten.vercel.app/borrowedBooks/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -40,7 +40,7 @@ const BorrowedBooksCard = ({ book, borrowedBooks, setBorrowedBooks }) => {
 
               // added quantity of book
 
-              fetch("http://localhost:5000/allBooks2", {
+              fetch("https://assignment-11-server-rouge-ten.vercel.app/allBooks2", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json",
@@ -49,7 +49,7 @@ const BorrowedBooksCard = ({ book, borrowedBooks, setBorrowedBooks }) => {
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  console.log(data);
+                  // console.log(data);
                 });
             }
           });

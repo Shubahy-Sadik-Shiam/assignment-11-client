@@ -2,20 +2,24 @@ import axios from "axios";
 import Lottie from "lottie-react";
 import bookAnimation from "../assets/Lottie/Animation - 1735745592439.json";
 import { Helmet } from "react-helmet";
+import Toast from "../hooks/Toast";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
+  const navigate = useNavigate();
   const handleAddBook = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
 
     axios
-      .post("http://localhost:5000/allBooks", initialData)
+      .post("https://assignment-11-server-rouge-ten.vercel.app/allBooks", initialData)
       .then((response) => {
         Toast.fire({
           icon: "success",
           title: "Book added successful",
         });
+        navigate("/allBooks");
       })
       .catch((error) => {
         Toast.fire({
@@ -23,7 +27,6 @@ const AddBook = () => {
           title: "Something went wrong!",
         });
       });
-    e.target.reset();
   };
   return (
     <div>
@@ -33,7 +36,7 @@ const AddBook = () => {
       <h2 className="text-center bg-gradient-to-r from-yellow-100 via-pink-200 to-yellow-300 text-4xl font-bold py-10">
         Add a New Treasure to the Collection
       </h2>
-      <div className="lg:flex justify-center">
+      <div className="lg:flex justify-center w-10/12 mx-auto">
         <form onSubmit={handleAddBook} className="my-10 rounded-xl bg-white">
           <div className="max-w-[550px] flex flex-col items-center mx-auto p-4 shadow-xl rounded-xl">
             <div className="md:flex gap-3">

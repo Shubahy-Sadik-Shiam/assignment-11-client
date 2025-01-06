@@ -1,9 +1,23 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import bgImg from "../assets/slider1.jpg";
 import Toast from "../hooks/Toast";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 const UpdateBook = () => {
-  const book = useLoaderData();
+  const [book, setBook] = useState({})
+
+  const {id} = useParams()
+
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(()=>{
+    axiosSecure
+    .get(`https://assignment-11-server-rouge-ten.vercel.app/book/${id}`)
+    .then(response=>{
+      setBook(response.data)
+    })
+  },[])
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -12,7 +26,7 @@ const UpdateBook = () => {
 
     const updatedBook = initialData;
 
-    fetch(`http://localhost:5000/updateBook/${book?._id}`, {
+    fetch(`https://assignment-11-server-rouge-ten.vercel.app/updateBook/${book?._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -29,7 +29,6 @@ const router = createBrowserRouter([
             <AllBooks></AllBooks>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/allBooks"),
       },
       {
         path: "/login",
@@ -45,8 +44,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <UpdateBook></UpdateBook>
           </PrivateRoute>
-        ),
-        loader: ({params})=> fetch(`http://localhost:5000/book/${params.id}`)
+        )
       },
       {
         path: "/borrowedBooks",
@@ -61,7 +59,7 @@ const router = createBrowserRouter([
         path: "/books/:category",
         element: <CategoryBooks></CategoryBooks>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/books/${params.category}`),
+          fetch(`https://assignment-11-server-rouge-ten.vercel.app/books/${params.category}`),
       },
       {
         path: "/book/:id",
@@ -69,9 +67,7 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <BookDetails></BookDetails>
           </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/book/${params.id}`),
+        )
       },
       {
         path: "/addBook",

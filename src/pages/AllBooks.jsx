@@ -1,14 +1,24 @@
 import { Link, useLoaderData } from "react-router-dom";
 import BookCard from "../cards/BookCard";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineArrowDropDownCircle } from "react-icons/md";
-import axios from "axios";
 import { FaSliders } from "react-icons/fa6";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AllBooks = () => {
-  const loadedBooks = useLoaderData();
-  const [books, setBooks] = useState(loadedBooks);
+  // const loadedBooks = useLoaderData();
+  const [books, setBooks] = useState([]);
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(()=>{
+    axiosSecure
+    .get("/allBooks")
+    .then(response=>{
+      setBooks(response.data)
+    })
+  },[])
+
 
   const [isTableView, setIsTableView] = useState(false);
   const [selectedView, setSelectedView] = useState("Card View");
@@ -24,7 +34,7 @@ const AllBooks = () => {
   };
 
   const handleAvailableBooks = () => {
-    axios.get("http://localhost:5000/availableBooks")
+    axiosSecure.get("/availableBooks")
     .then(response=>{
       setBooks(response.data)
     })
@@ -69,7 +79,7 @@ const AllBooks = () => {
                   <th>Cover Photo</th>
                   <th>Author</th>
                   <th>Category</th>
-                  <th>Quantity</th>
+                  <th>Available</th>
                   <th></th>
                 </tr>
               </thead>

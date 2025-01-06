@@ -1,16 +1,30 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import authorIcon from "../assets/author.png";
 import categoryIcon from "../assets/category.png";
 import ReactStars from "react-rating-stars-component";
 import Modal from "../cards/Modal";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BookDetails = () => {
-  const singleBook = useLoaderData();
+  // const singleBook = useLoaderData();
+  const [singleBook, setSingleBook] = useState({});
+ 
+  const axiosSecure = useAxiosSecure()
+  const {id} = useParams();
+
+  useEffect(()=>{
+    axiosSecure
+    .get(`https://assignment-11-server-rouge-ten.vercel.app/book/${id}`)
+    .then(response=>{
+      setSingleBook(response.data);
+      setAvailable(response.data.quantity);
+    })
+  },[])
+  const [available, setAvailable] = useState(singleBook.quantity);
 
   const {
-    _id,
     cover_photo,
     book_title,
     author_name,
@@ -22,7 +36,7 @@ const BookDetails = () => {
     isBorrowed,
   } = singleBook;
 
-  const [available, setAvailable] = useState(quantity);
+
   const [disabled, setDisabled] = useState(false);
   const [updateIsBorrowed, setUpdateIsBorrowed] = useState(isBorrowed);
 
@@ -35,7 +49,7 @@ const BookDetails = () => {
   return (
     <div className="lg:p-20 pb-10 w-10/12 mx-auto">
       <Helmet>
-        <title> {singleBook?.book_title} || BookNest </title>
+        <title> {`${singleBook?.book_title || "Loading..."} || BookNest`} </title>
       </Helmet>
       <div className="card flex-col lg:flex-row rounded-none card-side gap-10">
         <figure className="lg:w-1/2 h-[800px] shadow-xl">

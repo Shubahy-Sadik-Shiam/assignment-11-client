@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import loginData from "../assets/Lottie/Animation - 1735578998563.json";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import Toast from "../hooks/Toast";
@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { loginUser, googleLogin } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleGoogleLogin = () => {
     googleLogin()
@@ -16,9 +18,10 @@ const Login = () => {
           icon: "success",
           title: "Google Login successful",
         });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         Toast.fire({
           icon: "error",
           title: "Login with google failed",
@@ -38,6 +41,7 @@ const Login = () => {
           icon: "success",
           title: "Signed in successfully",
         });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         Toast.fire({
