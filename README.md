@@ -54,22 +54,10 @@ Slider.js
 
 To set up BookNest locally, follow these steps:
 
-Clone the repository:
-sh
-Copy
-Edit
-git clone https://github.com/your-username/booknest.git
+1. git clone https://github.com/your-username/booknest.git
 cd booknest
-Install dependencies:
-sh
-Copy
-Edit
-npm install
-Start the development server:
-sh
-Copy
-Edit
-npm start
+2. npm install
+3. npm start
 
 ## Live URL:
 
