@@ -26,10 +26,15 @@ Slider.js
 
 ## ✨ Features
 🔍 Search and browse books
+
 ⭐ Rate and review books
+
 📌 Save favorite books to your personal list
+
 📅 Track reading progress with moment.js
+
 🛠️ Smooth animations with lottie-react
+
 🔥 Firebase integration for real-time data storage
 
 ## 📦 Dependencies
