@@ -51,6 +51,7 @@ Slider.js
 }
 
 ## 🔧 Installation
+
 To set up BookNest locally, follow these steps:
 
 Clone the repository:
