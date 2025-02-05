@@ -17,6 +17,59 @@
 
 Slider.js
 
+## Technologies Used:
+1. React
+2. Tailwind CSS
+3. Node.js
+4. Mongodb
+5. Express.js
+
+## ✨ Features
+🔍 Search and browse books
+⭐ Rate and review books
+📌 Save favorite books to your personal list
+📅 Track reading progress with moment.js
+🛠️ Smooth animations with lottie-react
+🔥 Firebase integration for real-time data storage
+
+## 📦 Dependencies
+
+{
+  "axios": "^1.7.9",
+  "firebase": "^11.1.0",
+  "lottie-react": "^2.4.0",
+  "moment": "^2.30.1",
+  "react": "^18.3.1",
+  "react-countup": "^6.5.3",
+  "react-dom": "^18.3.1",
+  "react-helmet": "^6.1.0",
+  "react-icons": "^5.4.0",
+  "react-rating-stars-component": "^2.2.0",
+  "react-router-dom": "^7.1.1",
+  "sweetalert2": "^11.15.8",
+  "swiper": "^11.1.15"
+}
+
+## 🔧 Installation
+To set up BookNest locally, follow these steps:
+
+Clone the repository:
+sh
+Copy
+Edit
+git clone https://github.com/your-username/booknest.git
+cd booknest
+Install dependencies:
+sh
+Copy
+Edit
+npm install
+Start the development server:
+sh
+Copy
+Edit
+npm start
+
 ## Live URL:
 
 https://book-nest-238b7.web.app
