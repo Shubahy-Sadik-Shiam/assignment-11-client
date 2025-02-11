@@ -1,8 +1,8 @@
 import pic from "../../assets/pic.png"
 const ExtraSection2 = () => {
     return (
-        <div className="mt-20 bg-gradient-to-r from-yellow-100 via-pink-200 to-yellow-300 p-6">
-            <h2 className="text-4xl mb-10 font-bold text-center"><span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">Book Nest</span> Gift Card</h2>
+        <div className="my-32 bg-gradient-to-r from-yellow-100 to-pink-200 py-10">
+            <h2 className="text-5xl mt-10 mb-20 font-bold text-center"><span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">Book Nest</span> Gift Card</h2>
             <div className="md:flex gap-4 items-center justify-center">
                 <div className="space-y-6 w-6/12">
                 <div>

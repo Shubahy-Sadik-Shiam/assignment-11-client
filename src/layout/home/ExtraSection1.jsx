@@ -1,13 +1,13 @@
 import CountUp from "react-countup";
 const ExtraSection1 = () => {
   return (
-    <div className="py-10 text-center">
+    <div className=" text-center my-32">
       <div className="stats max-sm:inline-block  shadow">
-        <div className="stat place-items-center lg:w-80">
+        <div className="stat place-items-center lg:w-96">
           <div className="stat-title">Online Users</div>
           <CountUp
             className="stat-value"
-            duration={3}
+            duration={2}
             end={12000}
             enableScrollSpy={true}
           ></CountUp>
@@ -29,7 +29,7 @@ const ExtraSection1 = () => {
           <div className="stat-title">Best Authors</div>
           <CountUp
             className="stat-value"
-            duration={4}
+            duration={3}
             end={1250}
             enableScrollSpy={true}
           ></CountUp>

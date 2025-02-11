@@ -12,8 +12,8 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <BookCategories></BookCategories>
-            <ExtraSection2></ExtraSection2>
             <ExtraSection1></ExtraSection1>
+            <ExtraSection2></ExtraSection2>
         </div>
     );
 };
