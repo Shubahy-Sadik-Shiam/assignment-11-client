@@ -7,11 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
   const navigate = useNavigate();
+
   const handleAddBook = (e) => {
+    setError("");
     e.preventDefault();
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-
     axios
       .post("https://assignment-11-server-rouge-ten.vercel.app/allBooks", initialData)
       .then((response) => {
@@ -121,6 +122,8 @@ const AddBook = () => {
                 </label>
                 <input
                   required
+                  max="5"
+                  min="1"
                   type="number"
                   name="rating"
                   placeholder="rating"

@@ -1,10 +1,26 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/icons8-books-96.png";
 import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
 
   const {user, logOutUser} = useAuth()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const links = (
     <>
@@ -24,13 +40,17 @@ const Navbar = () => {
   );
   return (
     <header className="sticky top-0 z-10">
-      <div className="navbar py-4 px-10 bg-opacity-50 backdrop-blur-lg shadow-md">
+     <div
+      className={`navbar py-4 md:px-10 ${
+        location.pathname === "/" ? "fixed text-white" : ""
+      } ${isScrolled ? "bg-opacity-30 backdrop-blur-lg" : "bg-transparent"}`}
+    >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-7 w-7"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -45,14 +65,14 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-opacity-30 bg-gray-300 backdrop-blur-lg rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
           <div className="md:flex items-center gap-2">
-            <a className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">BookNest</a>
-            <img className="w-16" src={logo} alt="" />
+            <Link to="/" className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">BookNest</Link>
+            <img className="w-14" src={logo} alt="" />
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

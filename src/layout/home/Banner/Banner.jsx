@@ -13,7 +13,7 @@ import "./banner..css";
 import { Parallax, Pagination, Navigation, Autoplay } from "swiper/modules";
 const Banner = () => {
   return (
-    <div className="h-[600px] pt-4 w-10/12 mx-auto">
+    <div className="h-screen">
       <>
         <Swiper
           style={{

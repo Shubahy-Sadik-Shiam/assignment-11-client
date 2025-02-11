@@ -3,9 +3,9 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import Toast from "../hooks/Toast";
 
-const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
+const Modal = ({ singleBook, setAvailable, setIsBorrowed }) => {
   const { user } = useAuth();
-  const { _id, cover_photo, book_title, category} = singleBook;
+  const { _id, cover_photo, book_title, category } = singleBook;
 
   const email = user?.email;
   const userName = user?.displayName;
@@ -27,13 +27,36 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
     };
 
     axios
-      .post("https://assignment-11-server-rouge-ten.vercel.app/borrowedBooks", borrowInfo)
+      .post(
+        "https://assignment-11-server-rouge-ten.vercel.app/borrowedBooks",
+        borrowInfo
+      )
       .then((response) => {
-        // console.log(response);
-        Toast.fire({
-          icon: "success",
-          title: "Book borrowed and added to the Borrowed Books page",
-        });
+        if (response.data.insertedId) {
+          Toast.fire({
+            icon: "success",
+            title: "Book borrowed and added to the Borrowed Books page",
+          });
+          setAvailable((prev) => prev - 1);
+          setIsBorrowed(true);
+          
+          fetch("https://assignment-11-server-rouge-ten.vercel.app/allBooks", {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ id: _id }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              // console.log(data);
+            });
+        }else{
+          Toast.fire({
+            icon: "error",
+            title: "Book already borrowed!",
+          });
+        }
       })
       .catch((error) => {
         Toast.fire({
@@ -42,21 +65,7 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
         });
       });
 
-      fetch("https://assignment-11-server-rouge-ten.vercel.app/allBooks", {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify({id: _id})
-      })
-      .then(res=>res.json())
-      .then(data=>{
-        // console.log(data);
-        if(data.modifiedCount > 0){
-            setAvailable((prev)=> prev-1)
-            setUpdateIsBorrowed(true)
-        }
-      })
+   
   };
   return (
     <div>
@@ -101,7 +110,10 @@ const Modal = ({ singleBook, setAvailable, setUpdateIsBorrowed }) => {
               placeholder="Type here"
               className="input input-bordered input-warning w-full"
             />
-            <button type="submit" className="btn btn-block bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
+            <button
+              type="submit"
+              className="btn btn-block bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500"
+            >
               Submit
             </button>
           </form>

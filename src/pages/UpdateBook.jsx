@@ -115,6 +115,8 @@ const UpdateBook = () => {
               defaultValue={book?.rating}
               name="rating"
               type="number"
+              max="5"
+              min="1"
               placeholder="Give a rating between 1-5"
               className="input input-bordered"
             />

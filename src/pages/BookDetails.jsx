@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import authorIcon from "../assets/author.png";
 import categoryIcon from "../assets/category.png";
 import ReactStars from "react-rating-stars-component";
@@ -8,11 +8,13 @@ import { Helmet } from "react-helmet";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BookDetails = () => {
-  // const singleBook = useLoaderData();
   const [singleBook, setSingleBook] = useState({});
+  const [disabled, setDisabled] = useState(false);
+  const [isBorrowed, setIsBorrowed] = useState(false);
  
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const {id} = useParams();
+  // trying later
 
   useEffect(()=>{
     axiosSecure
@@ -21,7 +23,7 @@ const BookDetails = () => {
       setSingleBook(response.data);
       setAvailable(response.data.quantity);
     })
-  },[])
+  },[id, axiosSecure])
   const [available, setAvailable] = useState(singleBook.quantity);
 
   const {
@@ -33,12 +35,9 @@ const BookDetails = () => {
     rating,
     description,
     content,
-    isBorrowed,
   } = singleBook;
 
 
-  const [disabled, setDisabled] = useState(false);
-  const [updateIsBorrowed, setUpdateIsBorrowed] = useState(isBorrowed);
 
   useEffect(() => {
     if (quantity <= 0) {
@@ -87,11 +86,11 @@ const BookDetails = () => {
           </p>
           <div className="card-actions">
             <button
-              disabled={disabled || updateIsBorrowed}
+              disabled={disabled || isBorrowed}
               onClick={() => document.getElementById("my_modal_5").showModal()}
               className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500"
             >
-              {updateIsBorrowed ? "Already Borrowed" : "Borrow Now"}
+              {isBorrowed ? "Already Borrowed" : "Borrow Now"}
             </button>
           </div>
         </div>
@@ -99,7 +98,7 @@ const BookDetails = () => {
       <Modal
         singleBook={singleBook}
         setAvailable={setAvailable}
-        setUpdateIsBorrowed={setUpdateIsBorrowed}
+        setIsBorrowed={setIsBorrowed}
       ></Modal>
     </div>
   );

@@ -3,11 +3,9 @@
 @tailwind utilities;
 
 a.active {
-    background-color: white !important;
     background: linear-gradient(to right, #facc15, #fbbf24, #f59e0b);
     -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-    /* color: rgb(217, 179, 8) !important; */
     font-weight: 600;
     font-size: large;
   }
