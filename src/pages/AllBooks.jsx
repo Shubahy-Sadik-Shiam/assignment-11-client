@@ -5,20 +5,18 @@ import { useEffect, useState } from "react";
 import { MdOutlineArrowDropDownCircle } from "react-icons/md";
 import { FaSliders } from "react-icons/fa6";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const AllBooks = () => {
-  // const loadedBooks = useLoaderData();
-  const [books, setBooks] = useState([]);
   const axiosSecure = useAxiosSecure();
 
-  useEffect(()=>{
-    axiosSecure
-    .get("/allBooks")
-    .then(response=>{
-      setBooks(response.data)
-    })
-  },[])
-
+  const { data: books = [], isLoading } = useQuery({
+    queryKey: "allBooks",
+    queryFn: async () => {
+      const res = await axiosSecure.get("/allBooks");
+      return res.data;
+    },
+  });
 
   const [isTableView, setIsTableView] = useState(false);
   const [selectedView, setSelectedView] = useState("Card View");
@@ -34,29 +32,43 @@ const AllBooks = () => {
   };
 
   const handleAvailableBooks = () => {
-    axiosSecure.get("/availableBooks")
-    .then(response=>{
-      setBooks(response.data)
-    })
-  }
+    axiosSecure.get("/availableBooks").then((response) => {
+      setBooks(response.data);
+    });
+  };
   return (
     <div>
+      {isLoading && (
+        <div className="flex pt-10 w-10/12 mx-auto min-h-screen flex-col gap-4">
+          <div className="skeleton h-40 w-full"></div>
+          <div className="skeleton h-10 w-28"></div>
+          <div className="skeleton h-10 w-full"></div>
+          <div className="skeleton h-10 w-full"></div>
+          <div className="skeleton h-10 w-full"></div>
+          <div className="skeleton h-10 w-full"></div>
+          <div className="skeleton h-10 w-full"></div>
+        </div>
+      )}
       <Helmet>
         <title>All Books || BookNest </title>
       </Helmet>
-      <h2 className="text-center bg-gradient-to-r from-yellow-100 via-pink-200 to-yellow-300 text-4xl font-bold py-10">
+      <h2 className="text-center bg-gradient-to-r from-yellow-100 to-pink-200 text-4xl font-bold py-10">
         Browse Our Book Collection
       </h2>
       <div className="flex justify-between mt-5 w-10/12 mx-auto mb-4">
         <div>
-          <button onClick={handleAvailableBooks} className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500">
+          <button
+            onClick={handleAvailableBooks}
+            className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500"
+          >
             Show Available Books <FaSliders />
           </button>
         </div>
         <div>
           <details className="dropdown">
             <summary className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500 mb-1">
-              {selectedView} <MdOutlineArrowDropDownCircle className="text-2xl" />
+              {selectedView}{" "}
+              <MdOutlineArrowDropDownCircle className="text-2xl" />
             </summary>
             <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
               <li onClick={handleCardView}>

@@ -57,9 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/books/:category",
-        element: <CategoryBooks></CategoryBooks>,
-        loader: ({ params }) =>
-          fetch(`https://assignment-11-server-rouge-ten.vercel.app/books/${params.category}`),
+        element: <CategoryBooks></CategoryBooks>
       },
       {
         path: "/book/:id",
