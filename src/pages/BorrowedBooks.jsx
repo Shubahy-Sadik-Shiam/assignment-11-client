@@ -9,19 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 const BorrowedBooks = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
-  // const [borrowedBooks, setBorrowedBooks] = useState([]);
-  // useEffect(() => {
-  //   axiosSecure
-  //     .get(`/borrowedBooks?email=${user?.email}`)
-  //     .then((res) => {
-  //       setBorrowedBooks(res.data);
-  //     })
-  //     .catch((error) => {
-  //       // console.log(error)
-  //     });
-  // }, [user.email]);
-
-
+  
   const { data: borrowedBooks = [], refetch, isLoading } = useQuery({
     queryKey: "borrowedBooks",
     queryFn: async () => {

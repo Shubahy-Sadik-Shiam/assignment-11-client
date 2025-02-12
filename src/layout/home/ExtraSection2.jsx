@@ -5,7 +5,7 @@ const ExtraSection2 = () => {
   AOS.init();
   return (
     <div className="pb-32">
-      <div className="bg-gradient-to-r from-yellow-100 to-pink-200 py-10">
+      <div className="bg-gradient-to-r from-yellow-100 to-pink-200 py-10 lg:px-0 md:px-10">
         <h2
           data-aos="fade-up"
           data-aos-duration="1000"
@@ -17,7 +17,7 @@ const ExtraSection2 = () => {
           Gift Card
         </h2>
         <div className="md:flex gap-4 items-center justify-center">
-          <div className="space-y-6 w-6/12">
+          <div className="space-y-6 md:w-6/12 max-sm:px-10">
             <div
               data-aos="fade-right"
               data-aos-duration="1000"
@@ -62,9 +62,9 @@ const ExtraSection2 = () => {
           </div>
           <div data-aos="fade-left"
               data-aos-easing="ease-in-sine"
-              data-aos-duration="1000"
-              data-aos-offset="200">
-            <img className="w-96" src={pic} alt="" />
+              data-aos-duration="2000"
+              data-aos-offset="300">
+            <img className="md:w-96 w-80 max-sm:mt-10 max-sm:mx-auto" src={pic} alt="" />
           </div>
         </div>
       </div>

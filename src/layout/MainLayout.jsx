@@ -14,7 +14,7 @@ const MainLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="bg-[#F4F1F8] min-h-screen">
+            <div className=" min-h-screen">
             {isLoading && <Spinner></Spinner>}
             <Outlet></Outlet>
             </div>

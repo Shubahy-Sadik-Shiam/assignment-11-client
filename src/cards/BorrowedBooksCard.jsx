@@ -3,8 +3,6 @@ import categoryIcon from "../assets/category.png";
 const BorrowedBooksCard = ({ book, refetch }) => {
   const {
     _id,
-    email,
-    userName,
     borrowedDate,
     returnDate,
     cover_photo,
@@ -24,9 +22,12 @@ const BorrowedBooksCard = ({ book, refetch }) => {
       confirmButtonText: "Yes, return it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://assignment-11-server-rouge-ten.vercel.app/borrowedBooks/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-11-server-rouge-ten.vercel.app/borrowedBooks/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
@@ -36,15 +37,18 @@ const BorrowedBooksCard = ({ book, refetch }) => {
                 icon: "success",
               });
               refetch();
-              
+
               // added quantity of book
-              fetch("https://assignment-11-server-rouge-ten.vercel.app/allBooks2", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify({ id: book_id }),
-              })
+              fetch(
+                "https://assignment-11-server-rouge-ten.vercel.app/allBooks2",
+                {
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify({ id: book_id }),
+                }
+              )
                 .then((res) => res.json())
                 .then((data) => {
                   // console.log(data);
@@ -55,7 +59,7 @@ const BorrowedBooksCard = ({ book, refetch }) => {
     });
   };
   return (
-    <div className="card card-side bg-base-100 shadow-md">
+    <div className="card card-side bg-base-100 shadow-md max-sm:flex-col">
       <figure className="p-6 bg-gray-100">
         <img className="w-28" src={cover_photo} alt="Book" />
       </figure>

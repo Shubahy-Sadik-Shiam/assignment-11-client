@@ -9,8 +9,9 @@ import { useQuery } from "@tanstack/react-query";
 
 const AllBooks = () => {
   const axiosSecure = useAxiosSecure();
+  const [availableBooks, setAvailableBooks] = useState([]);
 
-  const { data: books = [], isLoading } = useQuery({
+  const { data: books = [], refetch, isLoading } = useQuery({
     queryKey: "allBooks",
     queryFn: async () => {
       const res = await axiosSecure.get("/allBooks");
@@ -33,7 +34,8 @@ const AllBooks = () => {
 
   const handleAvailableBooks = () => {
     axiosSecure.get("/availableBooks").then((response) => {
-      setBooks(response.data);
+      setAvailableBooks(response.data);
+      refetch();
     });
   };
   return (
@@ -55,7 +57,7 @@ const AllBooks = () => {
       <h2 className="text-center bg-gradient-to-r from-yellow-100 to-pink-200 text-4xl font-bold py-10">
         Browse Our Book Collection
       </h2>
-      <div className="flex justify-between mt-5 w-10/12 mx-auto mb-4">
+      <div className="md:flex max-sm:space-y-3 justify-between mt-5 w-10/12 mx-auto mb-4">
         <div>
           <button
             onClick={handleAvailableBooks}
@@ -65,7 +67,7 @@ const AllBooks = () => {
           </button>
         </div>
         <div>
-          <details className="dropdown">
+          <details className="dropdown mr-5">
             <summary className="btn bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500 mb-1">
               {selectedView}{" "}
               <MdOutlineArrowDropDownCircle className="text-2xl" />
@@ -97,7 +99,7 @@ const AllBooks = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {books.map((book) => (
+                {(availableBooks.length > 0 ? availableBooks : books).map((book) => (
                   <tr key={book?._id}>
                     <td>
                       <div className="flex items-center gap-3">
@@ -132,7 +134,7 @@ const AllBooks = () => {
         </div>
       ) : (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6 py-10 w-10/12 mx-auto">
-          {books.map((book) => (
+          {(availableBooks.length > 0 ? availableBooks : books).map((book) => (
             <BookCard key={book._id} book={book}></BookCard>
           ))}
         </div>
