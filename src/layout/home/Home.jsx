@@ -1,4 +1,5 @@
 import Banner from "./Banner/Banner";
+import BestSellerBooks from "./BestSellerBooks";
 import BookCategories from "./BookCategories";
 import ExtraSection1 from "./ExtraSection1";
 import ExtraSection2 from "./ExtraSection2";
@@ -12,6 +13,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <BookCategories></BookCategories>
+            <BestSellerBooks></BestSellerBooks>
             <ExtraSection1></ExtraSection1>
             <ExtraSection2></ExtraSection2>
         </div>
