@@ -6,21 +6,24 @@ import img3 from "../../../assets/slider3.jpg";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import "./banner..css";
+import "animate.css";
+import "swiper/css/effect-fade";
 
 // import required modules
-import { Parallax, Pagination, Navigation, Autoplay } from "swiper/modules";
+import { Parallax, Pagination, Navigation, Autoplay, EffectFade } from "swiper/modules";
 const Banner = () => {
   return (
     <div className="h-screen">
       <>
         <Swiper
+         effect="fade"
+         fadeEffect={{ crossFade: true }}
           style={{
             "--swiper-navigation-color": "#fff",
             "--swiper-pagination-color": "#fff",
           }}
-          speed={600}
+          speed={800}
           parallax={true}
           autoplay={{
             delay: 3000,
@@ -30,10 +33,10 @@ const Banner = () => {
             clickable: true,
           }}
           navigation={true}
-          modules={[Parallax, Pagination, Navigation, Autoplay]}
+          modules={[Parallax, Pagination, Navigation, Autoplay, EffectFade]}
           className="mySwiper"
         >
-          <SwiperSlide>
+          <SwiperSlide className="transition-all duration-700 ease-in-out">
             <div
               slot="container-start"
               className="parallax-bg inset-0 bg-black opacity-50"
@@ -51,7 +54,7 @@ const Banner = () => {
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="transition-all duration-700 ease-in-out">
             <div
               slot="container-start"
               className="parallax-bg inset-0 bg-black opacity-50"
@@ -69,7 +72,7 @@ const Banner = () => {
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="transition-all duration-700 ease-in-out">
             <div
               slot="container-start"
               className="parallax-bg inset-0 bg-black opacity-50"
