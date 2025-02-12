@@ -51,8 +51,8 @@ const BookDetails = () => {
         <title> {`${singleBook?.book_title || "Loading..."} || BookNest`} </title>
       </Helmet>
       <div className="card flex-col lg:flex-row rounded-none card-side gap-10">
-        <figure className="lg:w-1/2 h-[800px] shadow-xl">
-          <img src={cover_photo} alt="Book" />
+        <figure className="lg:w-1/2 shadow-lg shadow-pink-200">
+          <img className="w-7/12" src={cover_photo} alt="Book" />
         </figure>
         <div className="lg:w-1/2 space-y-4">
           <h2 className="text-4xl font-bold font-serif">{book_title}</h2>

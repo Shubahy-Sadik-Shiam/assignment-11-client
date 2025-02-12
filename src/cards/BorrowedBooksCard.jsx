@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import categoryIcon from "../assets/category.png";
-const BorrowedBooksCard = ({ book, borrowedBooks, setBorrowedBooks }) => {
+const BorrowedBooksCard = ({ book, refetch }) => {
   const {
     _id,
     email,
@@ -35,11 +35,9 @@ const BorrowedBooksCard = ({ book, borrowedBooks, setBorrowedBooks }) => {
                 text: "Book Returned Successfully.",
                 icon: "success",
               });
-              const remainingBook = borrowedBooks.filter((b) => b._id !== _id);
-              setBorrowedBooks(remainingBook);
-
+              refetch();
+              
               // added quantity of book
-
               fetch("https://assignment-11-server-rouge-ten.vercel.app/allBooks2", {
                 method: "PUT",
                 headers: {
